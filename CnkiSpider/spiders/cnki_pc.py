@@ -57,8 +57,8 @@ class CnkiPcSpider(scrapy.Spider):
 
     def parse_article(self,response):
         soup = BeautifulSoup(response.body, 'html.parser')
-        title = soup.select('.class="wx-tit"')[0].get_text()
-        abstract = soup.select('span[class="abstract-text"]')[0].get_text()
+        title = soup.select('.wx-tit h1')[0].get_text()
+        abstract = soup.select('.abstract-text')[0].get_text()
         yield {
             "title" : title,
             "abstract" : abstract
