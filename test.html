@@ -1,0 +1,1291 @@
+<form method="post" name="gridTableForm">
+    <div id="gridTable" class="search-result">
+<div class='toolbar'><div id="countPageDiv" class="result-con-r"><span class='pagerTitleCell'>共找到<em>141</em>条结果</span><span class='countPageMark'>1/8</span><span class='topTurnSpan'><a id='Page_next_top' title='键盘的“← →”可以实现快速翻页' data-curPage='2'>>></a></span></div><div class='toolbar-col'>
+        <div class="checkcount">
+            <label class="checkAll"><input type="checkbox" name="selectCheckbox" id="selectCheckAll1" onclick="$(this).filenameClick()">全选</label>
+            <span>已选：</span>
+            <em title='点击查看所选文献' id='selectCount' name='selectCount' onclick='window.open(APPPATH + "/manage.html"+(GetQueryStringByName("subject")?"?subject="+GetQueryStringByName("subject"):""))'>0</em>
+            <a href="javascript:$.filenameClear();">清除</a>
+          </div>         
+          <ul class="dropdown-analysis-btns" id="batchOpsBox">
+			<li class="bulkdownload export"><a href="javascript:void(0)">批量下载</a></li>
+              <li>
+                <a href="javascript:void(0)">导出与分析</a><i class="icon-d"></i>
+                <ul>
+                  <li class="export">
+                    <a href="javascript:void(0)">导出文献</a>
+                    <i class="icon-r"></i>
+                    <ul class="secondUl">
+                      <li><a href="javascript:void(0)" exportType="GBTREFER">GB/T 7714-2015 格式引文</a></li>
+                      <li><a href="javascript:void(0)" exportType="elearning" >知网研学（原E-Study）</a></li>
+                      <li><a href="javascript:void(0)" exportType="REFER" >CAJ-CD 格式引文</a></li>
+                       <li><a href="javascript:void(0)" exportType="MLA" >MLA格式引文</a></li>
+                       <li><a href="javascript:void(0)" exportType="APA" >APA格式引文</a></li>
+                      <li><a href="javascript:void(0)" exportType="NEW" >查新（引文格式）</a></li>
+                      <li><a href="javascript:void(0)" exportType="newdefine" >查新（自定义引文格式）</a></li>
+                      <li><a href="javascript:void(0)" exportType="Refworks" >Refworks</a></li>
+                      <li><a href="javascript:void(0)" exportType="EndNote" >EndNote</a></li>
+                      <li><a href="javascript:void(0)" exportType="NoteExpress" >NoteExpress</a></li>
+                      <li><a href="javascript:void(0)" exportType="NodeFirst" >NoteFirst</a></li>
+                      <li><a href="javascript:void(0)" exportType="selfDefine">自定义</a></li>
+                    </ul>
+                  </li>
+                  <li id="analysisLi">
+                    <a href="javascript:void(0)">可视化分析</a><i class="icon-r"></i>
+                    <ul class="secondUl">
+                      <li id="anisys_select"><a href="javascript:void(0)">已选结果分析(<span>0</span>)</a></li>
+                      <li id="anisys_all"><a href="javascript:void(0)">全部检索结果分析</a></li>
+                    </ul>
+                  </li>
+                 
+                </ul>
+              </li>
+            </ul>
+          <ul class="change-list" id="DivDisplayMode"><li  title="详情" data-obj="result-piclist" data-mode="custommode"><i class="icon-detail"></i></li><li class="active" title="列表" data-obj="result-table-list" data-mode="listmode"><i class="icon-table"></i></li></ul><div class="statistic"><div id="id_grid_display_num"  class="page-show-count">显示<div class="sort" id="perPageDiv"><div class="sort-default"><span>20</span><i class="icon icon-sort"></i></div><ul class="sort-list"><li  data-val="10"><a href="javascript:void(0);">10</a></li><li data-val="20" class="cur"><a href="javascript:void(0);" >20</a></li> <li  data-val="50"><a href="javascript:void(0);" >50</a></li></ul></div></div></div><div class="order-group" id="sortList"><span> 排序：</span><ul class="order" id="orderList"><li class='descend cur' title='只在800万条记录以内有效' data-k="RELEVANT" data-sorttype="relevant%2c(%e5%8f%91%e8%a1%a8%e6%97%b6%e9%97%b4%2c%27time%27)" data-sort="RELEVANT-%e7%9b%b8%e5%85%b3%e5%ba%a6%2frelevant%2c(%e5%8f%91%e8%a1%a8%e6%97%b6%e9%97%b4%2c%27time%27)" data-onlydesc="true">相关度</li><li data-sorttype="(%e5%8f%91%e8%a1%a8%e6%97%b6%e9%97%b4%2c%27time%27)"  data-k="PT"  data-sort="PT-%e5%8f%91%e8%a1%a8%e6%97%b6%e9%97%b4%2f(%e5%8f%91%e8%a1%a8%e6%97%b6%e9%97%b4%2c%27time%27)" data-onlydesc="false">发表时间</li><li data-sorttype="(%e8%a2%ab%e5%bc%95%e9%a2%91%e6%ac%a1%2c%27INTEGER%27)"  data-k="CITY"  data-sort="CITY-%e8%a2%ab%e5%bc%95%2f(%e8%a2%ab%e5%bc%95%e9%a2%91%e6%ac%a1%2c%27INTEGER%27)" data-onlydesc="false">被引</li><li data-sorttype="(%e4%b8%8b%e8%bd%bd%e9%a2%91%e6%ac%a1%2c%27INTEGER%27)"  data-k="DOWNLOAD"  data-sort="DOWNLOAD-%e4%b8%8b%e8%bd%bd%2f(%e4%b8%8b%e8%bd%bd%e9%a2%91%e6%ac%a1%2c%27INTEGER%27)" data-onlydesc="false">下载</li><li data-sorttype="relevant%2c(ffd%2c%27NUM1000%27)"  data-k="ALL"  data-sort="ALL-%e7%bb%bc%e5%90%88%2frelevant%2c(ffd%2c%27NUM1000%27)" data-onlydesc="true">综合</li></ul></div></div></div><table class="result-table-list"> <thead><tr><th></th><th>题名</th><th>作者</th><th>来源</th><th>发表时间</th><th>数据库</th><th>被引</th><th>下载</th><th>操作</th></tr></thead><tr  class="odd" >
+<td class="seq"><input class="cbItem" type=checkbox data-cur=1 name=CookieName  value="CAPJLAST!XDQB20230516001!1!0"  onclick="$(this).filenameClick()"  >1</td>     
+      <td class="name" >
+        
+       <a class="fz14" href='/kns8/Detail?sfield=fn&QueryID=0&CurRec=1&recid=&FileName=XDQB20230516001&DbName=CAPJLAST&DbCode=CAPJ&yx=Y&pr=&URLID=22.1182.G3.20230516.1026.004' target='_blank'>新媒体环境下突发环境事件网络<font class=Mark>舆情风险</font>信息<font class=Mark>感知</font>模型</a>
+         
+        
+          <B class="marktip">网络首发</B> 
+      
+               
+         
+           
+           
+        
+        
+           
+        
+         
+		</td>
+      <td class="author">
+      <a class='KnowledgeNetLink' href='/kns8/Detail?sdb=CAPJ&sfield=%e4%bd%9c%e8%80%85&skey=%e8%b0%a2%e5%aa%9b&scode=000045683106&acode=000045683106' target="knet">谢媛</a>; <a class='KnowledgeNetLink' href='/kns8/Detail?sdb=CAPJ&sfield=%e4%bd%9c%e8%80%85&skey=%e6%9d%8e%e6%9c%ac%e4%b9%be&scode=000036785513&acode=000036785513' target="knet">李本乾</a>   
+      </td>
+      <td class="source">     
+    
+      <a  target=_blank href='/kns8/Navi?DBCode=CAPJ&BaseID=XDQB'>现代情报</a>     
+      
+      
+      
+     </td>
+      <td class="date">
+        2023-05-16 17:20
+      </td>        
+      <td class="data">
+	     期刊 
+      </td> 
+      <td class="quote">
+        
+      </td>
+      <td class="download">  
+         
+        <a class="downloadCnt" href='javascript:void(0);'>116</a>
+         
+      </td>
+        <td class="operat">
+            
+         <a href="/kns8/download?filename=vhFVwQHO5wmcttCN1Q1c29Uc3IWSH9WRwwmc5hkdG50KOBXUZhlaFBXdUFDTiJzcnFFWo92cKF2REFHW1RWdYB1URtkQxcDOzQWcQNnUxJjRXFmSyUHRh9kclp0ZJ9CWZVFb0UGV2gnTRl2aOp0LnJ2VspUWhJlU&tablename=CAPJLAST" title="未登录" target=_blank class="downloadlink icon-notlogged"><i></i><b> 下载</b></a>
+        
+         
+         
+        
+         <a class="icon-read"  target="online_open" href='/kns8/Detail/Read?domain=tablename%3dCAPJLAST%26filename%3dXDQB20230516001%26dbCode%3dCAPJ' title="在线阅读"><i></i></a>
+             
+        
+           
+         <a class="icon-collect" title="收藏" data-dbname="CAPJ" data-filename="XDQB20230516001"><i></i></a>
+          
+             
+        <a class="icon-quote" title="引用" href="javascript:void(0)"><i></i></a> 
+        
+      </td>            
+ 
+      </tr><tr >
+<td class="seq"><input class="cbItem" type=checkbox data-cur=2 name=CookieName  value="CAPJLAST!ZTKB20230504001!2!0"  onclick="$(this).filenameClick()"  >2</td>     
+      <td class="name" >
+        
+       <a class="fz14" href='/kns8/Detail?sfield=fn&QueryID=0&CurRec=2&recid=&FileName=ZTKB20230504001&DbName=CAPJLAST&DbCode=CAPJ&yx=Y&pr=&URLID=51.1448.N.20230504.2058.002' target='_blank'>基于知识图谱的旅游危机研究可视化分析</a>
+         
+        
+          <B class="marktip">网络首发</B> 
+      
+               
+         
+           
+           
+        
+        
+           
+        
+         
+		</td>
+      <td class="author">
+      <a class='KnowledgeNetLink' href='/kns8/Detail?sdb=CAPJ&sfield=%e4%bd%9c%e8%80%85&skey=%e4%bb%b2%e5%bb%ba%e5%85%b0&scode=000024110660&acode=000024110660' target="knet">仲建兰</a>; <a class='KnowledgeNetLink' href='/kns8/Detail?sdb=CAPJ&sfield=%e4%bd%9c%e8%80%85&skey=%e8%a2%81%e6%99%93%e7%81%b5&scode=000054980716&acode=000054980716' target="knet">袁晓灵</a>   
+      </td>
+      <td class="source">     
+    
+      <a  target=_blank href='/kns8/Navi?DBCode=CAPJ&BaseID=ZTKB'>资源开发与市场</a>     
+      
+      
+      
+     </td>
+      <td class="date">
+        2023-05-05 11:26
+      </td>        
+      <td class="data">
+	     期刊 
+      </td> 
+      <td class="quote">
+        
+      </td>
+      <td class="download">  
+         
+        <a class="downloadCnt" href='javascript:void(0);'>262</a>
+         
+      </td>
+        <td class="operat">
+            
+         <a href="/kns8/download?filename=vhFVwQHO5wmcttCN1Q1c29Uc3IWSH9WRwwmc5hkdG50KOBXUZhlaFBXdUFDTiJzcnFFWo92cKF2REFHWlRXaaF3dSVVYOx2Qv10d4R2a0NDc2BnbiVHRh9kclp0ZJ9CWZVFb0UGV2gnTRl2aOp0LnJ2VspUWhJlU&tablename=CAPJLAST" title="未登录" target=_blank class="downloadlink icon-notlogged"><i></i><b> 下载</b></a>
+        
+         
+         
+           
+         <a class="icon-html"  target="online_open" href='/kns8/Detail/Read?flag=html&domain=dbcode%3dCAPJ%26filename%3dZTKB20230504001' title="HTML阅读"><i></i></a>  
+            
+        
+           
+         <a class="icon-collect" title="收藏" data-dbname="CAPJ" data-filename="ZTKB20230504001"><i></i></a>
+          
+             
+        <a class="icon-quote" title="引用" href="javascript:void(0)"><i></i></a> 
+        
+      </td>            
+ 
+      </tr><tr  class="odd" >
+<td class="seq"><input class="cbItem" type=checkbox data-cur=3 name=CookieName  value="CJFDAUTO!XBSD202303011!3!0"  onclick="$(this).filenameClick()"  >3</td>     
+      <td class="name" >
+        
+       <a class="fz14" href='/kns8/Detail?sfield=fn&QueryID=0&CurRec=3&recid=&FileName=XBSD202303011&DbName=CJFDAUTO&DbCode=CJFD&yx=A&pr=&URLID=62.1086.c.20230403.1230.010' target='_blank'><font class=Mark>风险感知</font>与行为阈限：传播<font class=Mark>风险</font>特征、成因及防范策略</a>
+         
+        
+        
+      
+               
+         
+           
+           
+        
+        
+           
+        
+         
+		</td>
+      <td class="author">
+      <a class='KnowledgeNetLink' href='/kns8/Detail?sdb=CJFD&sfield=%e4%bd%9c%e8%80%85&skey=%e9%9d%96%e9%b8%a3&scode=000036847733&acode=000036847733' target="knet">靖鸣</a>   
+      </td>
+      <td class="source">     
+    
+      <a  target=_blank href='/kns8/Navi?DBCode=CJFD&BaseID=XBSD'>西北师大学报(社会科学版)</a>     
+      
+      
+      
+     </td>
+      <td class="date">
+        2023-04-06 09:10
+      </td>        
+      <td class="data">
+	     期刊 
+      </td> 
+      <td class="quote">
+        
+      </td>
+      <td class="download">  
+         
+        <a class="downloadCnt" href='javascript:void(0);'>438</a>
+         
+      </td>
+        <td class="operat">
+            
+         <a href="/kns8/download?filename=FVwQHO5wmcttCN1Q1c29Uc3IWSH9WRwwmc5hkdG50KOBXUZhlaFBXdUFDTiJzcnFFWo92cKF2REFHW=0TTJtidM9COlZ0ZM1kZSlUUqlHUqdDU0d2RuVTS4VFdBNGVId0d2gnTRl2aOp0LnJ2VspUWhJlUvh&tablename=CJFDAUTO" title="未登录" target=_blank class="downloadlink icon-notlogged"><i></i><b> 下载</b></a>
+        
+         
+         
+           
+         <a class="icon-html"  target="online_open" href='/kns8/Detail/Read?flag=html&domain=dbcode%3dCJFD%26filename%3dXBSD202303011' title="HTML阅读"><i></i></a>  
+            
+        
+           
+         <a class="icon-collect" title="收藏" data-dbname="CJFD" data-filename="XBSD202303011"><i></i></a>
+          
+             
+        <a class="icon-quote" title="引用" href="javascript:void(0)"><i></i></a> 
+        
+      </td>            
+ 
+      </tr><tr >
+<td class="seq"><input class="cbItem" type=checkbox data-cur=4 name=CookieName  value="CJFDLAST2023!WTXB202303003!4!0"  onclick="$(this).filenameClick()"  >4</td>     
+      <td class="name" >
+        
+       <a class="fz14" href='/kns8/Detail?sfield=fn&QueryID=0&CurRec=4&recid=&FileName=WTXB202303003&DbName=CJFDLAST2023&DbCode=CJFD&yx=&pr=&URLID=' target='_blank'>大型体育赛事<font class=Mark>风险</font>传播评估模型构建</a>
+         
+        
+        
+      
+               
+         
+           
+           
+        
+        
+           
+        
+         
+		</td>
+      <td class="author">
+      <a class='KnowledgeNetLink' href='/kns8/Detail?sdb=CJFD&sfield=%e4%bd%9c%e8%80%85&skey=%e5%90%95%e6%99%b6%e6%99%b6&scode=000053765932&acode=000053765932' target="knet">吕晶晶</a>; <a class='KnowledgeNetLink' href='/kns8/Detail?sdb=CJFD&sfield=%e4%bd%9c%e8%80%85&skey=%e5%ae%8b%e5%a8%9c&scode=000026888262&acode=000026888262' target="knet">宋娜</a>; <a class='KnowledgeNetLink' href='/kns8/Detail?sdb=CJFD&sfield=%e4%bd%9c%e8%80%85&skey=%e9%83%ad%e6%99%b4&scode=000040046323&acode=000040046323' target="knet">郭晴</a>   
+      </td>
+      <td class="source">     
+    
+      <a  target=_blank href='/kns8/Navi?DBCode=CJFD&BaseID=WTXB'>武汉体育学院学报</a>     
+      
+      
+      
+     </td>
+      <td class="date">
+        2023-03-15
+      </td>        
+      <td class="data">
+	     期刊 
+      </td> 
+      <td class="quote">
+        
+      </td>
+      <td class="download">  
+         
+        <a class="downloadCnt" href='javascript:void(0);'>352</a>
+         
+      </td>
+        <td class="operat">
+            
+         <a href="/kns8/download?filename=vhFVwQHO5wmcttCN1Q1c29Uc3IWSH9WRwwmc5hkdG50KOBXUZhlaFBXdUFDTiJzcnFFWo92cKF2REFHWlN3N0oUQU9CRRh2cWZjMNZjboFVa5MXMCdjcxxGbmtEU5FnSjV0b0J1Q2gnTRl2aOp0LnJ2VspUWhJlU&tablename=CJFDLAST2023" title="未登录" target=_blank class="downloadlink icon-notlogged"><i></i><b> 下载</b></a>
+        
+         
+         
+           
+         <a class="icon-html"  target="online_open" href='/kns8/Detail/Read?flag=html&domain=dbcode%3dCJFD%26filename%3dWTXB202303003' title="HTML阅读"><i></i></a>  
+            
+        
+           
+         <a class="icon-collect" title="收藏" data-dbname="CJFD" data-filename="WTXB202303003"><i></i></a>
+          
+             
+        <a class="icon-quote" title="引用" href="javascript:void(0)"><i></i></a> 
+        
+      </td>            
+ 
+      </tr><tr  class="odd" >
+<td class="seq"><input class="cbItem" type=checkbox data-cur=5 name=CookieName  value="CJFDLAST2023!ZWGD202301027!5!0"  onclick="$(this).filenameClick()"  >5</td>     
+      <td class="name" >
+        
+       <a class="fz14" href='/kns8/Detail?sfield=fn&QueryID=0&CurRec=5&recid=&FileName=ZWGD202301027&DbName=CJFDLAST2023&DbCode=CJFD&yx=&pr=&URLID=' target='_blank'>公共危机信息响应模式对公众应对行为的影响机制</a>
+         
+        
+        
+      
+               
+         
+           
+           
+        
+        
+           
+        
+         
+		</td>
+      <td class="author">
+      <a class='KnowledgeNetLink' href='/kns8/Detail?sdb=CJFD&sfield=%e4%bd%9c%e8%80%85&skey=%e7%b2%9f%e8%b7%af%e5%86%9b&scode=000020137331&acode=000020137331' target="knet">粟路军</a>; <a class='KnowledgeNetLink' href='/kns8/Detail?sdb=CJFD&sfield=%e4%bd%9c%e8%80%85&skey=%e5%86%af%e5%a7%97&scode=000053279779&acode=000053279779' target="knet">冯姗</a>   
+      </td>
+      <td class="source">     
+    
+      <a  target=_blank href='/kns8/Navi?DBCode=CJFD&BaseID=ZWGD'>管理评论</a>     
+      
+      
+      
+     </td>
+      <td class="date">
+        2023-01-31
+      </td>        
+      <td class="data">
+	     期刊 
+      </td> 
+      <td class="quote">
+        
+      </td>
+      <td class="download">  
+         
+        <a class="downloadCnt" href='javascript:void(0);'>629</a>
+         
+      </td>
+        <td class="operat">
+            
+         <a href="/kns8/download?filename=vhFVwQHO5wmcttCN1Q1c29Uc3IWSH9WRwwmc5hkdG50KOBXUZhlaFBXdUFDTiJzcnFFWo92cKF2REFHWsNXRUpETkpmdZdWTGNWbuN1NKRHWwk1RHdnaMFHa4p2UxllWzBXeohjT2gnTRl2aOp0LnJ2VspUWhJlU&tablename=CJFDLAST2023" title="未登录" target=_blank class="downloadlink icon-notlogged"><i></i><b> 下载</b></a>
+        
+         
+         
+           
+         <a class="icon-html"  target="online_open" href='/kns8/Detail/Read?flag=html&domain=dbcode%3dCJFD%26filename%3dZWGD202301027' title="HTML阅读"><i></i></a>  
+            
+        
+           
+         <a class="icon-collect" title="收藏" data-dbname="CJFD" data-filename="ZWGD202301027"><i></i></a>
+          
+             
+        <a class="icon-quote" title="引用" href="javascript:void(0)"><i></i></a> 
+        
+      </td>            
+ 
+      </tr><tr >
+<td class="seq"><input class="cbItem" type=checkbox data-cur=6 name=CookieName  value="CJFDLAST2023!YJJY202301014!6!0"  onclick="$(this).filenameClick()"  >6</td>     
+      <td class="name" >
+        
+       <a class="fz14" href='/kns8/Detail?sfield=fn&QueryID=0&CurRec=6&recid=&FileName=YJJY202301014&DbName=CJFDLAST2023&DbCode=CJFD&yx=&pr=&URLID=' target='_blank'>大面积停电事件公众行为及应急能力提升策略研究——以深圳市为例</a>
+         
+        
+        
+      
+               
+         
+           
+           
+        
+        
+           
+        
+         
+		</td>
+      <td class="author">
+      <a class='KnowledgeNetLink' href='/kns8/Detail?sdb=CJFD&sfield=%e4%bd%9c%e8%80%85&skey=%e9%82%b5%e5%85%89%e6%ad%a3&scode=000048818816&acode=000048818816' target="knet">邵光正</a>   
+      </td>
+      <td class="source">     
+    
+      <a  target=_blank href='/kns8/Navi?DBCode=CJFD&BaseID=YJJY'>中国应急救援</a>     
+      
+      
+      
+     </td>
+      <td class="date">
+        2023-01-20
+      </td>        
+      <td class="data">
+	     期刊 
+      </td> 
+      <td class="quote">
+        
+      </td>
+      <td class="download">  
+         
+        <a class="downloadCnt" href='javascript:void(0);'>140</a>
+         
+      </td>
+        <td class="operat">
+            
+         <a href="/kns8/download?filename=vhFVwQHO5wmcttCN1Q1c29Uc3IWSH9WRwwmc5hkdG50KOBXUZhlaFBXdUFDTiJzcnFFWo92cKF2REFHW4ZHTkNnZ1UjQyEWYnVDSZZWcLJ3TXtUW4U0T2l2M2lGTiZzc3FXY6J1Q2gnTRl2aOp0LnJ2VspUWhJlU&tablename=CJFDLAST2023" title="未登录" target=_blank class="downloadlink icon-notlogged"><i></i><b> 下载</b></a>
+        
+         
+         
+           
+         <a class="icon-html"  target="online_open" href='/kns8/Detail/Read?flag=html&domain=dbcode%3dCJFD%26filename%3dYJJY202301014' title="HTML阅读"><i></i></a>  
+            
+        
+           
+         <a class="icon-collect" title="收藏" data-dbname="CJFD" data-filename="YJJY202301014"><i></i></a>
+          
+             
+        <a class="icon-quote" title="引用" href="javascript:void(0)"><i></i></a> 
+        
+      </td>            
+ 
+      </tr><tr  class="odd" >
+<td class="seq"><input class="cbItem" type=checkbox data-cur=7 name=CookieName  value="CJFDLAST2023!NMDB202301008!7!0"  onclick="$(this).filenameClick()"  >7</td>     
+      <td class="name" >
+        
+       <a class="fz14" href='/kns8/Detail?sfield=fn&QueryID=0&CurRec=7&recid=&FileName=NMDB202301008&DbName=CJFDLAST2023&DbCode=CJFD&yx=&pr=&URLID=' target='_blank'>地方政府重大<font class=Mark>风险</font>治理中<font class=Mark>风险</font>放大的行为产生逻辑——基于疫情防控“<font class=Mark>风险</font>空间放大”的分析</a>
+         
+        
+        
+      
+               
+         
+           
+           
+        
+        
+           
+        
+         
+		</td>
+      <td class="author">
+      <a class='KnowledgeNetLink' href='/kns8/Detail?sdb=CJFD&sfield=%e4%bd%9c%e8%80%85&skey=%e9%ab%98%e5%85%89%e6%b6%b5&scode=000050104020&acode=000050104020' target="knet">高光涵</a>   
+      </td>
+      <td class="source">     
+    
+      <a  target=_blank href='/kns8/Navi?DBCode=CJFD&BaseID=NMDB'>内蒙古大学学报(哲学社会科学版)</a>     
+      
+      
+      
+     </td>
+      <td class="date">
+        2023-01-15
+      </td>        
+      <td class="data">
+	     期刊 
+      </td> 
+      <td class="quote">
+        
+      </td>
+      <td class="download">  
+         
+        <a class="downloadCnt" href='javascript:void(0);'>132</a>
+         
+      </td>
+        <td class="operat">
+            
+         <a href="/kns8/download?filename=vhFVwQHO5wmcttCN1Q1c29Uc3IWSH9WRwwmc5hkdG50KOBXUZhlaFBXdUFDTiJzcnFFWo92cKF2REFHW2pVRGdTYxB3QyUlMnV3NpBTamZzUt9WMCdjcxxGbmtEU5FnSjV0b0J1Q2gnTRl2aOp0LnJ2VspUWhJlU&tablename=CJFDLAST2023" title="未登录" target=_blank class="downloadlink icon-notlogged"><i></i><b> 下载</b></a>
+        
+         
+         
+           
+         <a class="icon-html"  target="online_open" href='/kns8/Detail/Read?flag=html&domain=dbcode%3dCJFD%26filename%3dNMDB202301008' title="HTML阅读"><i></i></a>  
+            
+        
+           
+         <a class="icon-collect" title="收藏" data-dbname="CJFD" data-filename="NMDB202301008"><i></i></a>
+          
+             
+        <a class="icon-quote" title="引用" href="javascript:void(0)"><i></i></a> 
+        
+      </td>            
+ 
+      </tr><tr >
+<td class="seq"><input class="cbItem" type=checkbox data-cur=8 name=CookieName  value="CJFDLAST2023!SHYJ202301010!8!0"  onclick="$(this).filenameClick()"  >8</td>     
+      <td class="name" >
+        
+       <a class="fz14" href='/kns8/Detail?sfield=fn&QueryID=0&CurRec=8&recid=&FileName=SHYJ202301010&DbName=CJFDLAST2023&DbCode=CJFD&yx=&pr=&URLID=' target='_blank'>循例而鉴：突发事件危机沟通中的“镜鉴效应”</a>
+         
+        
+        
+      
+               
+         
+           
+           
+        
+        
+           
+        
+         
+		</td>
+      <td class="author">
+      <a class='KnowledgeNetLink' href='/kns8/Detail?sdb=CJFD&sfield=%e4%bd%9c%e8%80%85&skey=%e5%90%b4%e6%99%93%e6%9e%97&scode=000042238190&acode=000042238190' target="knet">吴晓林</a>; <a class='KnowledgeNetLink' href='/kns8/Detail?sdb=CJFD&sfield=%e4%bd%9c%e8%80%85&skey=%e9%82%a2%e7%be%bf%e9%a3%9e&scode=000008632621&acode=000008632621' target="knet">邢羿飞</a>   
+      </td>
+      <td class="source">     
+    
+      <a  target=_blank href='/kns8/Navi?DBCode=CJFD&BaseID=SHYJ'>社会科学研究</a>     
+      
+      
+      
+     </td>
+      <td class="date">
+        2023-01-01
+      </td>        
+      <td class="data">
+	     期刊 
+      </td> 
+      <td class="quote">
+        
+      </td>
+      <td class="download">  
+         
+        <a class="downloadCnt" href='javascript:void(0);'>788</a>
+         
+      </td>
+        <td class="operat">
+            
+         <a href="/kns8/download?filename=vhFVwQHO5wmcttCN1Q1c29Uc3IWSH9WRwwmc5hkdG50KOBXUZhlaFBXdUFDTiJzcnFFWo92cKF2REFHW2N3NPhVO1V2TrRmYXREawUjcvQ0YMF3awh3dwtCbmtEU5FnSjV0b0J1Q2gnTRl2aOp0LnJ2VspUWhJlU&tablename=CJFDLAST2023" title="未登录" target=_blank class="downloadlink icon-notlogged"><i></i><b> 下载</b></a>
+        
+         
+         
+           
+         <a class="icon-html"  target="online_open" href='/kns8/Detail/Read?flag=html&domain=dbcode%3dCJFD%26filename%3dSHYJ202301010' title="HTML阅读"><i></i></a>  
+            
+        
+           
+         <a class="icon-collect" title="收藏" data-dbname="CJFD" data-filename="SHYJ202301010"><i></i></a>
+          
+             
+        <a class="icon-quote" title="引用" href="javascript:void(0)"><i></i></a> 
+        
+      </td>            
+ 
+      </tr><tr  class="odd" >
+<td class="seq"><input class="cbItem" type=checkbox data-cur=9 name=CookieName  value="CJFDLAST2022!STYS202210003!9!0"  onclick="$(this).filenameClick()"  >9</td>     
+      <td class="name" >
+        
+       <a class="fz14" href='/kns8/Detail?sfield=fn&QueryID=0&CurRec=9&recid=&FileName=STYS202210003&DbName=CJFDLAST2022&DbCode=CJFD&yx=&pr=&URLID=' target='_blank'>基于动态网络的事件<font class=Mark>风险</font>演变研究</a>
+         
+        
+        
+      
+               
+         
+           
+           
+        
+        
+           
+        
+         
+		</td>
+      <td class="author">
+      <a class='KnowledgeNetLink' href='/kns8/Detail?sdb=CJFD&sfield=%e4%bd%9c%e8%80%85&skey=%e9%97%ab%e5%bf%97%e5%8d%8e&scode=000038434983&acode=000038434983' target="knet">闫志华</a>; <a class='KnowledgeNetLink' href='/kns8/Detail?sdb=CJFD&sfield=%e4%bd%9c%e8%80%85&skey=%e5%94%90%e9%94%a1%e6%99%8b&scode=000036717469&acode=000036717469' target="knet">唐锡晋</a>   
+      </td>
+      <td class="source">     
+    
+      
+      <a  target=_blank href='/kns8/Navi?DBCode=CJFD&BaseID=STYS' >系统科学与数学</a>
+      
+      
+     </td>
+      <td class="date">
+        2022-10-15
+      </td>        
+      <td class="data">
+	     期刊 
+      </td> 
+      <td class="quote">
+        
+      </td>
+      <td class="download">  
+         
+        <a class="downloadCnt" href='javascript:void(0);'>160</a>
+         
+      </td>
+        <td class="operat">
+            
+         <a href="/kns8/download?filename=vhFVwQHO5wmcttCN1Q1c29Uc3IWSH9WRwwmc5hkdG50KOBXUZhlaFBXdUFDTiJzcnFFWo92cKF2REFHWtl0RQ1EM2MmT01Wc5VHTUF0akNzKVVjZStEMjpkMvcWUrpWM3FXY6J1Q2gnTRl2aOp0LnJ2VspUWhJlU&tablename=CJFDLAST2022" title="未登录" target=_blank class="downloadlink icon-notlogged"><i></i><b> 下载</b></a>
+        
+         
+         
+        
+         <a class="icon-read"  target="online_open" href='/kns8/Detail/Read?domain=tablename%3dCJFDLAST2022%26filename%3dSTYS202210003%26dbCode%3dCJFD' title="在线阅读"><i></i></a>
+             
+        
+           
+         <a class="icon-collect" title="收藏" data-dbname="CJFD" data-filename="STYS202210003"><i></i></a>
+          
+             
+        <a class="icon-quote" title="引用" href="javascript:void(0)"><i></i></a> 
+        
+      </td>            
+ 
+      </tr><tr >
+<td class="seq"><input class="cbItem" type=checkbox data-cur=10 name=CookieName  value="CJFDLAST2022!SPGY202209080!10!0"  onclick="$(this).filenameClick()"  >10</td>     
+      <td class="name" >
+        
+       <a class="fz14" href='/kns8/Detail?sfield=fn&QueryID=0&CurRec=10&recid=&FileName=SPGY202209080&DbName=CJFDLAST2022&DbCode=CJFD&yx=&pr=&URLID=' target='_blank'>互联网场景下口岸食品<font class=Mark>风险</font>态势<font class=Mark>感知</font>捕捉模型研究</a>
+         
+        
+        
+      
+               
+         
+           
+           
+        
+        
+           
+        
+         
+		</td>
+      <td class="author">
+      <a class='KnowledgeNetLink' href='/kns8/Detail?sdb=CJFD&sfield=%e4%bd%9c%e8%80%85&skey=%e7%a8%8b%e7%ab%8b%e5%8b%8b&scode=000023892148&acode=000023892148' target="knet">程立勋</a>; <a class='KnowledgeNetLink' href='/kns8/Detail?sdb=CJFD&sfield=%e4%bd%9c%e8%80%85&skey=%e9%83%91%e6%96%87%e4%b8%bd&scode=000006749931&acode=000006749931' target="knet">郑文丽</a>; <a class='KnowledgeNetLink' href='/kns8/Detail?sdb=CJFD&sfield=%e4%bd%9c%e8%80%85&skey=%e8%94%a1%e4%bc%8a%e5%a8%9c&scode=000024716851&acode=000024716851' target="knet">蔡伊娜</a>; <a class='KnowledgeNetLink' href='/kns8/Detail?sdb=CJFD&sfield=%e4%bd%9c%e8%80%85&skey=%e5%8c%85%e5%85%88%e9%9b%a8&scode=000025674111&acode=000025674111' target="knet">包先雨</a>   
+      </td>
+      <td class="source">     
+    
+      
+      <a  target=_blank href='/kns8/Navi?DBCode=CJFD&BaseID=SPGY' >食品工业</a>
+      
+      
+     </td>
+      <td class="date">
+        2022-09-20
+      </td>        
+      <td class="data">
+	     期刊 
+      </td> 
+      <td class="quote">
+        
+      </td>
+      <td class="download">  
+         
+        <a class="downloadCnt" href='javascript:void(0);'>72</a>
+         
+      </td>
+        <td class="operat">
+            
+         <a href="/kns8/download?filename=vhFVwQHO5wmcttCN1Q1c29Uc3IWSH9WRwwmc5hkdG50KOBXUZhlaFBXdUFDTiJzcnFFWo92cKF2REFHWPxkcCFHNZpUYx0mS0IGdh5kbzsmdFxGSPtmajxmNxkXSiZzc3FXY6J1Q2gnTRl2aOp0LnJ2VspUWhJlU&tablename=CJFDLAST2022" title="未登录" target=_blank class="downloadlink icon-notlogged"><i></i><b> 下载</b></a>
+        
+         
+         
+           
+         <a class="icon-html"  target="online_open" href='/kns8/Detail/Read?flag=html&domain=dbcode%3dCJFD%26filename%3dSPGY202209080' title="HTML阅读"><i></i></a>  
+            
+        
+           
+         <a class="icon-collect" title="收藏" data-dbname="CJFD" data-filename="SPGY202209080"><i></i></a>
+          
+             
+        <a class="icon-quote" title="引用" href="javascript:void(0)"><i></i></a> 
+        
+      </td>            
+ 
+      </tr><tr  class="odd" >
+<td class="seq"><input class="cbItem" type=checkbox data-cur=11 name=CookieName  value="CJFDLAST2022!JSDX202204010!11!0"  onclick="$(this).filenameClick()"  >11</td>     
+      <td class="name" >
+        
+       <a class="fz14" href='/kns8/Detail?sfield=fn&QueryID=0&CurRec=11&recid=&FileName=JSDX202204010&DbName=CJFDLAST2022&DbCode=CJFD&yx=A&pr=&URLID=43.1069.C.20220806.0740.006' target='_blank'>突发事件网络<font class=Mark>舆情风险</font>演化规律及防控策略</a>
+         
+        
+        
+      
+               
+         
+           
+           
+        
+        
+           
+        
+         
+		</td>
+      <td class="author">
+      <a class='KnowledgeNetLink' href='/kns8/Detail?sdb=CJFD&sfield=%e4%bd%9c%e8%80%85&skey=%e7%8e%8b%e6%9e%97%e5%b9%b3&scode=000045354195&acode=000045354195' target="knet">王林平</a>; <a class='KnowledgeNetLink' href='/kns8/Detail?sdb=CJFD&sfield=%e4%bd%9c%e8%80%85&skey=%e9%ab%98%e5%ae%87&scode=000033075012&acode=000033075012' target="knet">高宇</a>   
+      </td>
+      <td class="source">     
+    
+      <a  target=_blank href='/kns8/Navi?DBCode=CJFD&BaseID=JSDX'>吉首大学学报(社会科学版)</a>     
+      
+      
+      
+     </td>
+      <td class="date">
+        2022-08-08 13:44
+      </td>        
+      <td class="data">
+	     期刊 
+      </td> 
+      <td class="quote">
+         
+         <span><a class="KnowledgeNetLink" href='/kns8/Detail?sdb=CJFD&sfield=cite&skey=%e7%aa%81%e5%8f%91%e4%ba%8b%e4%bb%b6%e7%bd%91%e7%bb%9c%e8%88%86%e6%83%85%e9%a3%8e%e9%99%a9%e6%bc%94%e5%8c%96%e8%a7%84%e5%be%8b%e5%8f%8a%e9%98%b2%e6%8e%a7%e7%ad%96%e7%95%a5&scode=JSDX202204010' target="_blank">4</a></span>
+        
+      </td>
+      <td class="download">  
+         
+        <a class="downloadCnt" href='javascript:void(0);'>2366</a>
+         
+      </td>
+        <td class="operat">
+            
+         <a href="/kns8/download?filename=vhFVwQHO5wmcttCN1Q1c29Uc3IWSH9WRwwmc5hkdG50KOBXUZhlaFBXdUFDTiJzcnFFWo92cKF2REFHW0IzKzkHWx5mTPpHTyUjTjNDOPZXTF9yNRBjS3pWRkJ0T5FnSjV0b0J1Q2gnTRl2aOp0LnJ2VspUWhJlU&tablename=CJFDLAST2022" title="未登录" target=_blank class="downloadlink icon-notlogged"><i></i><b> 下载</b></a>
+        
+         
+         
+           
+         <a class="icon-html"  target="online_open" href='/kns8/Detail/Read?flag=html&domain=dbcode%3dCJFD%26filename%3dJSDX202204010' title="HTML阅读"><i></i></a>  
+            
+        
+           
+         <a class="icon-collect" title="收藏" data-dbname="CJFD" data-filename="JSDX202204010"><i></i></a>
+          
+             
+        <a class="icon-quote" title="引用" href="javascript:void(0)"><i></i></a> 
+        
+      </td>            
+ 
+      </tr><tr >
+<td class="seq"><input class="cbItem" type=checkbox data-cur=12 name=CookieName  value="CMFD202301!1022661010.nh!12!0"  onclick="$(this).filenameClick()"  >12</td>     
+      <td class="name" >
+        
+        <a class="fz14" href='/kns8/Detail?sfield=fn&QueryID=0&CurRec=12&FileName=1022661010.nh&DbName=CMFD202301&DbCode=CMFD' target='_blank'>社会化公共危机信息交互行为的影响因素研究</a>
+          
+        
+        
+      
+               
+         
+           
+           
+        
+        
+           
+        
+         
+		</td>
+      <td class="author">
+      <a class='KnowledgeNetLink' href='/kns8/Detail?sdb=CMFD&sfield=%e4%bd%9c%e8%80%85&skey=%e5%91%a8%e7%91%b6%e7%91%b6&scode=000048382835&acode=000048382835' target="knet">周瑶瑶</a>   
+      </td>
+      <td class="source">     
+    
+      <a  target=_blank href='/kns8/Navi?DBCode=CMFD&BaseID=GNCHU'>南昌大学</a>     
+     
+      
+      
+     </td>
+      <td class="date">
+        2022-05-30
+      </td>        
+      <td class="data">
+	     硕士 
+      </td> 
+      <td class="quote">
+        
+      </td>
+      <td class="download">  
+         
+        <a class="downloadCnt" href='javascript:void(0);'>147</a>
+         
+      </td>
+        <td class="operat">
+            
+         <a href="/kns8/download?filename=vhFVwQHO5wmcttCN1Q1c29Uc3IWSH9WRwwmc5hkdG50KOBXUZhlaFBXdUFDTiJzcnFFWo92cKF2REFHWyQmboN1KJ1mU4lFexUDZq9EVt9yY1pHTxIlMYRGV2klUkFlRGhGbOVHW2gnTRl2aOp0LnJ2VspUWhJlU&tablename=CMFD202301" title="未登录" target=_blank class="downloadlink icon-notlogged"><i></i><b> 下载</b></a>
+        
+         
+         
+        
+         <a class="icon-read"  target="online_open" href='/kns8/Detail/Read?domain=tablename%3dCMFD202301%26filename%3d1022661010.nh%26dbCode%3dCMFD' title="在线阅读"><i></i></a>
+             
+        
+           
+         <a class="icon-collect" title="收藏" data-dbname="CMFD" data-filename="1022661010.nh"><i></i></a>
+          
+             
+        <a class="icon-quote" title="引用" href="javascript:void(0)"><i></i></a> 
+        
+      </td>            
+ 
+      </tr><tr  class="odd" >
+<td class="seq"><input class="cbItem" type=checkbox data-cur=13 name=CookieName  value="CMFD202301!1022814095.nh!13!0"  onclick="$(this).filenameClick()"  >13</td>     
+      <td class="name" >
+        
+        <a class="fz14" href='/kns8/Detail?sfield=fn&QueryID=0&CurRec=13&FileName=1022814095.nh&DbName=CMFD202301&DbCode=CMFD' target='_blank'>网络群体性事件中主流媒体<font class=Mark>风险</font>沟通效果的影响因素研究       
+      ——基于fsQCA的方法</a>
+       
+        
+        
+      
+               
+         
+           
+           
+        
+        
+           
+        
+         
+		</td>
+      <td class="author">
+      <a class='KnowledgeNetLink' href='/kns8/Detail?sdb=CMFD&sfield=%e4%bd%9c%e8%80%85&skey=%e5%8d%95%e5%b7%a7%e6%99%ba&scode=000014189486&acode=000014189486' target="knet">单巧智</a>   
+      </td>
+      <td class="source">     
+    
+      <a  target=_blank href='/kns8/Navi?DBCode=CMFD&BaseID=GNGHY'>湖南理工学院</a>     
+     
+      
+      
+     </td>
+      <td class="date">
+        2022-05-25
+      </td>        
+      <td class="data">
+	     硕士 
+      </td> 
+      <td class="quote">
+        
+      </td>
+      <td class="download">  
+         
+        <a class="downloadCnt" href='javascript:void(0);'>141</a>
+         
+      </td>
+        <td class="operat">
+            
+         <a href="/kns8/download?filename=vhFVwQHO5wmcttCN1Q1c29Uc3IWSH9WRwwmc5hkdG50KOBXUZhlaFBXdUFDTiJzcnFFWo92cKF2REFHWS92RpF0c2s2M6ZTaKZkUhVmWCtUZEpGS5gFZNR2U2klUkFlRGhGbOVHW2gnTRl2aOp0LnJ2VspUWhJlU&tablename=CMFD202301" title="未登录" target=_blank class="downloadlink icon-notlogged"><i></i><b> 下载</b></a>
+        
+         
+         
+        
+         <a class="icon-read"  target="online_open" href='/kns8/Detail/Read?domain=tablename%3dCMFD202301%26filename%3d1022814095.nh%26dbCode%3dCMFD' title="在线阅读"><i></i></a>
+             
+        
+           
+         <a class="icon-collect" title="收藏" data-dbname="CMFD" data-filename="1022814095.nh"><i></i></a>
+          
+             
+        <a class="icon-quote" title="引用" href="javascript:void(0)"><i></i></a> 
+        
+      </td>            
+ 
+      </tr><tr >
+<td class="seq"><input class="cbItem" type=checkbox data-cur=14 name=CookieName  value="CJFDLAST2022!SPAJ202209038!14!0"  onclick="$(this).filenameClick()"  >14</td>     
+      <td class="name" >
+        
+       <a class="fz14" href='/kns8/Detail?sfield=fn&QueryID=0&CurRec=14&recid=&FileName=SPAJ202209038&DbName=CJFDLAST2022&DbCode=CJFD&yx=&pr=&URLID=' target='_blank'>基于网络<font class=Mark>舆情</font>的食品添加剂消费者认知分析</a>
+         
+        
+        
+      
+               
+         
+           
+           
+        
+        
+           
+        
+         
+		</td>
+      <td class="author">
+      <a class='KnowledgeNetLink' href='/kns8/Detail?sdb=CJFD&sfield=%e4%bd%9c%e8%80%85&skey=%e6%9d%8e%e8%8d%b7%e4%b8%bd&scode=000023292843&acode=000023292843' target="knet">李荷丽</a>; <a class='KnowledgeNetLink' href='/kns8/Detail?sdb=CJFD&sfield=%e4%bd%9c%e8%80%85&skey=%e9%9f%a9%e4%b8%96%e9%b9%a4&scode=000021227303&acode=000021227303' target="knet">韩世鹤</a>; <a class='KnowledgeNetLink' href='/kns8/Detail?sdb=CJFD&sfield=%e4%bd%9c%e8%80%85&skey=%e7%bd%97%e5%ad%a3%e9%98%b3&scode=000024854177&acode=000024854177' target="knet">罗季阳</a>; <a class='KnowledgeNetLink' href='/kns8/Detail?sdb=CJFD&sfield=%e4%bd%9c%e8%80%85&skey=%e6%96%b9%e8%88%92%e6%ad%a3&scode=000015192124&acode=000015192124' target="knet">方舒正</a>; <a class='KnowledgeNetLink' href='/kns8/Detail?sdb=CJFD&sfield=%e4%bd%9c%e8%80%85&skey=%e6%9d%8e%e7%ab%8b&scode=000035093018&acode=000035093018' target="knet">李立</a>; <a class='KnowledgeNetLink' href='/kns8/Detail?sdb=CJFD&sfield=%e4%bd%9c%e8%80%85&skey=%e9%9f%a9%e6%97%ad%e8%be%89&scode=000048061556&acode=000048061556' target="knet">韩旭辉</a>; <a class='KnowledgeNetLink' href='/kns8/Detail?sdb=CJFD&sfield=%e4%bd%9c%e8%80%85&skey=%e5%90%b4%e7%88%b1%e7%90%b3&scode=000048061557&acode=000048061557' target="knet">吴爱琳</a>; <a class='KnowledgeNetLink' href='/kns8/Detail?sdb=CJFD&sfield=%e4%bd%9c%e8%80%85&skey=%e5%91%a8%e4%bd%b3%e6%82%a6&scode=000048061558&acode=000048061558' target="knet">周佳悦</a>   
+      </td>
+      <td class="source">     
+    
+      <a  target=_blank href='/kns8/Navi?DBCode=CJFD&BaseID=SPAJ'>食品安全质量检测学报</a>     
+      
+      
+      
+     </td>
+      <td class="date">
+        2022-05-15
+      </td>        
+      <td class="data">
+	     期刊 
+      </td> 
+      <td class="quote">
+         
+         <span><a class="KnowledgeNetLink" href='/kns8/Detail?sdb=CJFD&sfield=cite&skey=%e5%9f%ba%e4%ba%8e%e7%bd%91%e7%bb%9c%e8%88%86%e6%83%85%e7%9a%84%e9%a3%9f%e5%93%81%e6%b7%bb%e5%8a%a0%e5%89%82%e6%b6%88%e8%b4%b9%e8%80%85%e8%ae%a4%e7%9f%a5%e5%88%86%e6%9e%90&scode=SPAJ202209038' target="_blank">1</a></span>
+        
+      </td>
+      <td class="download">  
+         
+        <a class="downloadCnt" href='javascript:void(0);'>1178</a>
+         
+      </td>
+        <td class="operat">
+            
+         <a href="/kns8/download?filename=vhFVwQHO5wmcttCN1Q1c29Uc3IWSH9WRwwmc5hkdG50KOBXUZhlaFBXdUFDTiJzcnFFWo92cKF2REFHW5cHUyJ2LxsUVlxUdsJURLR2d1F0N5MWOyQjUC9EewkXSiZzc3FXY6J1Q2gnTRl2aOp0LnJ2VspUWhJlU&tablename=CJFDLAST2022" title="未登录" target=_blank class="downloadlink icon-notlogged"><i></i><b> 下载</b></a>
+        
+         
+         
+           
+         <a class="icon-html"  target="online_open" href='/kns8/Detail/Read?flag=html&domain=dbcode%3dCJFD%26filename%3dSPAJ202209038' title="HTML阅读"><i></i></a>  
+            
+        
+           
+         <a class="icon-collect" title="收藏" data-dbname="CJFD" data-filename="SPAJ202209038"><i></i></a>
+          
+             
+        <a class="icon-quote" title="引用" href="javascript:void(0)"><i></i></a> 
+        
+      </td>            
+ 
+      </tr><tr  class="odd" >
+<td class="seq"><input class="cbItem" type=checkbox data-cur=15 name=CookieName  value="CJFDLAST2022!HJGC202204030!15!0"  onclick="$(this).filenameClick()"  >15</td>     
+      <td class="name" >
+        
+       <a class="fz14" href='/kns8/Detail?sfield=fn&QueryID=0&CurRec=15&recid=&FileName=HJGC202204030&DbName=CJFDLAST2022&DbCode=CJFD&yx=A&pr=&URLID=11.2097.X.20220510.1133.002' target='_blank'>基于环境<font class=Mark>舆情</font>文本挖掘的大气环境<font class=Mark>风险感知</font>评价</a>
+         
+        
+        
+      
+               
+         
+           
+           
+        
+        
+           
+        
+         
+		</td>
+      <td class="author">
+      <a class='KnowledgeNetLink' href='/kns8/Detail?sdb=CJFD&sfield=%e4%bd%9c%e8%80%85&skey=%e8%b5%b5%e9%94%90&scode=000030137623&acode=000030137623' target="knet">赵锐</a>; <a class='KnowledgeNetLink' href='/kns8/Detail?sdb=CJFD&sfield=%e4%bd%9c%e8%80%85&skey=%e5%88%98%e5%a9%95&scode=000047977857&acode=000047977857' target="knet">刘婕</a>; <a class='KnowledgeNetLink' href='/kns8/Detail?sdb=CJFD&sfield=%e4%bd%9c%e8%80%85&skey=%e5%91%a8%e5%ae%87%e7%be%bd&scode=000047977858&acode=000047977858' target="knet">周宇羽</a>; <a class='KnowledgeNetLink' href='/kns8/Detail?sdb=CJFD&sfield=%e4%bd%9c%e8%80%85&skey=%e6%9d%a8%e6%9e%97%e5%b7%9d&scode=000004458828&acode=000004458828' target="knet">杨林川</a>   
+      </td>
+      <td class="source">     
+    
+      
+      <a  target=_blank href='/kns8/Navi?DBCode=CJFD&BaseID=HJGC' >环境工程</a>
+      
+      
+     </td>
+      <td class="date">
+        2022-05-10 14:34
+      </td>        
+      <td class="data">
+	     期刊 
+      </td> 
+      <td class="quote">
+         
+         <span><a class="KnowledgeNetLink" href='/kns8/Detail?sdb=CJFD&sfield=cite&skey=%e5%9f%ba%e4%ba%8e%e7%8e%af%e5%a2%83%e8%88%86%e6%83%85%e6%96%87%e6%9c%ac%e6%8c%96%e6%8e%98%e7%9a%84%e5%a4%a7%e6%b0%94%e7%8e%af%e5%a2%83%e9%a3%8e%e9%99%a9%e6%84%9f%e7%9f%a5%e8%af%84%e4%bb%b7&scode=HJGC202204030' target="_blank">1</a></span>
+        
+      </td>
+      <td class="download">  
+         
+        <a class="downloadCnt" href='javascript:void(0);'>707</a>
+         
+      </td>
+        <td class="operat">
+            
+         <a href="/kns8/download?filename=vhFVwQHO5wmcttCN1Q1c29Uc3IWSH9WRwwmc5hkdG50KOBXUZhlaFBXdUFDTiJzcnFFWo92cKF2REFHWht0LXZmcGJjaIJUUDN1UykHRRZzbYJkai12TLpEewkXSiZzc3FXY6J1Q2gnTRl2aOp0LnJ2VspUWhJlU&tablename=CJFDLAST2022" title="未登录" target=_blank class="downloadlink icon-notlogged"><i></i><b> 下载</b></a>
+        
+         
+         
+           
+         <a class="icon-html"  target="online_open" href='/kns8/Detail/Read?flag=html&domain=dbcode%3dCJFD%26filename%3dHJGC202204030' title="HTML阅读"><i></i></a>  
+            
+        
+           
+         <a class="icon-collect" title="收藏" data-dbname="CJFD" data-filename="HJGC202204030"><i></i></a>
+          
+             
+        <a class="icon-quote" title="引用" href="javascript:void(0)"><i></i></a> 
+        
+      </td>            
+ 
+      </tr><tr >
+<td class="seq"><input class="cbItem" type=checkbox data-cur=16 name=CookieName  value="CMFDTEMP!1023427279.nh!16!0"  onclick="$(this).filenameClick()"  >16</td>     
+      <td class="name" >
+        
+        <a class="fz14" href='/kns8/Detail?sfield=fn&QueryID=0&CurRec=16&FileName=1023427279.nh&DbName=CMFDTEMP&DbCode=CMFD' target='_blank'>微博中暴力伤医<font class=Mark>舆情风险</font>的形成机制与防范策略研究</a>
+          
+        
+        
+      
+               
+         
+           
+           
+        
+        
+           
+        
+         
+		</td>
+      <td class="author">
+      <a class='KnowledgeNetLink' href='/kns8/Detail?sdb=CMFD&sfield=%e4%bd%9c%e8%80%85&skey=%e6%ae%b5%e8%8e%8e%e8%8e%8e&scode=000003508429&acode=000003508429' target="knet">段莎莎</a>   
+      </td>
+      <td class="source">     
+    
+      <a  target=_blank href='/kns8/Navi?DBCode=CMFD&BaseID=GHEBU'>河北大学</a>     
+     
+      
+      
+     </td>
+      <td class="date">
+        2022-05-01
+      </td>        
+      <td class="data">
+	     硕士 
+      </td> 
+      <td class="quote">
+        
+      </td>
+      <td class="download">  
+         
+        <a class="downloadCnt" href='javascript:void(0);'>66</a>
+         
+      </td>
+        <td class="operat">
+            
+         <a href="/kns8/download?filename=FVwQHO5wmcttCN1Q1c29Uc3IWSH9WRwwmc5hkdG50KOBXUZhlaFBXdUFDTiJzcnFFWo92cKF2REFHW=0TWiJzd0gzathjaDNEW6l0Q5gzd450R0p0U3dzcqVENS5kW6VGV2gnTRl2aOp0LnJ2VspUWhJlUvh&tablename=CMFDTEMP" title="未登录" target=_blank class="downloadlink icon-notlogged"><i></i><b> 下载</b></a>
+        
+         
+         
+        
+         <a class="icon-read"  target="online_open" href='/kns8/Detail/Read?domain=tablename%3dCMFDTEMP%26filename%3d1023427279.nh%26dbCode%3dCMFD' title="在线阅读"><i></i></a>
+             
+        
+           
+         <a class="icon-collect" title="收藏" data-dbname="CMFD" data-filename="1023427279.nh"><i></i></a>
+          
+             
+        <a class="icon-quote" title="引用" href="javascript:void(0)"><i></i></a> 
+        
+      </td>            
+ 
+      </tr><tr  class="odd" >
+<td class="seq"><input class="cbItem" type=checkbox data-cur=17 name=CookieName  value="CMFDTEMP!1023456433.nh!17!0"  onclick="$(this).filenameClick()"  >17</td>     
+      <td class="name" >
+        
+        <a class="fz14" href='/kns8/Detail?sfield=fn&QueryID=0&CurRec=17&FileName=1023456433.nh&DbName=CMFDTEMP&DbCode=CMFD' target='_blank'>突发性新闻超网络传播的影响因素及导控策略研究</a>
+          
+        
+        
+      
+               
+         
+           
+           
+        
+        
+           
+        
+         
+		</td>
+      <td class="author">
+      <a class='KnowledgeNetLink' href='/kns8/Detail?sdb=CMFD&sfield=%e4%bd%9c%e8%80%85&skey=%e5%86%af%e8%81%aa%e8%81%aa&scode=000047053998&acode=000047053998' target="knet">冯聪聪</a>   
+      </td>
+      <td class="source">     
+    
+      <a  target=_blank href='/kns8/Navi?DBCode=CMFD&BaseID=GHEGY'>河南工业大学</a>     
+     
+      
+      
+     </td>
+      <td class="date">
+        2022-05-01
+      </td>        
+      <td class="data">
+	     硕士 
+      </td> 
+      <td class="quote">
+        
+      </td>
+      <td class="download">  
+         
+        <a class="downloadCnt" href='javascript:void(0);'>22</a>
+         
+      </td>
+        <td class="operat">
+            
+         <a href="/kns8/download?filename=FVwQHO5wmcttCN1Q1c29Uc3IWSH9WRwwmc5hkdG50KOBXUZhlaFBXdUFDTiJzcnFFWo92cKF2REFHW=0TVXt0b2tmayJzdCJTS4l0Q5gzd450R0p0U3dzcqVENS5kW6VGV2gnTRl2aOp0LnJ2VspUWhJlUvh&tablename=CMFDTEMP" title="未登录" target=_blank class="downloadlink icon-notlogged"><i></i><b> 下载</b></a>
+        
+         
+         
+        
+         <a class="icon-read"  target="online_open" href='/kns8/Detail/Read?domain=tablename%3dCMFDTEMP%26filename%3d1023456433.nh%26dbCode%3dCMFD' title="在线阅读"><i></i></a>
+             
+        
+           
+         <a class="icon-collect" title="收藏" data-dbname="CMFD" data-filename="1023456433.nh"><i></i></a>
+          
+             
+        <a class="icon-quote" title="引用" href="javascript:void(0)"><i></i></a> 
+        
+      </td>            
+ 
+      </tr><tr >
+<td class="seq"><input class="cbItem" type=checkbox data-cur=18 name=CookieName  value="CMFD202301!1022763035.nh!18!0"  onclick="$(this).filenameClick()"  >18</td>     
+      <td class="name" >
+        
+        <a class="fz14" href='/kns8/Detail?sfield=fn&QueryID=0&CurRec=18&FileName=1022763035.nh&DbName=CMFD202301&DbCode=CMFD' target='_blank'>突发公共卫生事件下网络<font class=Mark>舆情</font>传播机理研究</a>
+          
+        
+        
+      
+               
+         
+           
+           
+        
+        
+           
+        
+         
+		</td>
+      <td class="author">
+      <a class='KnowledgeNetLink' href='/kns8/Detail?sdb=CMFD&sfield=%e4%bd%9c%e8%80%85&skey=%e7%94%b0%e7%ba%a2%e6%a2%85&scode=000041613063&acode=000041613063' target="knet">田红梅</a>   
+      </td>
+      <td class="source">     
+    
+      <a  target=_blank href='/kns8/Navi?DBCode=CMFD&BaseID=GHBKU'>河北科技大学</a>     
+     
+      
+      
+     </td>
+      <td class="date">
+        2022-05-01
+      </td>        
+      <td class="data">
+	     硕士 
+      </td> 
+      <td class="quote">
+        
+      </td>
+      <td class="download">  
+         
+        <a class="downloadCnt" href='javascript:void(0);'>160</a>
+         
+      </td>
+        <td class="operat">
+            
+         <a href="/kns8/download?filename=nJ2VspUWhJlUvhFVwQHO5wmcttCN1Q1c29Uc3IWSH9WRwwmc5hkdG50KOBXUZhlaFBXdUFDTiJzcnFFWo92cKF2REFHW==QW0onVFVDePlnMrMnUBVTTqlmY4hGZZlVMjdjarlUOr4UOphjc3sSa000Rm9EOFx2MMRWSiJlTJVHW2gnTRl2aOp0L&tablename=CMFD202301" title="未登录" target=_blank class="downloadlink icon-notlogged"><i></i><b> 下载</b></a>
+        
+         
+         
+        
+         <a class="icon-read"  target="online_open" href='/kns8/Detail/Read?domain=tablename%3dCMFD202301%26filename%3d1022763035.nh%26dbCode%3dCMFD' title="在线阅读"><i></i></a>
+             
+        
+           
+         <a class="icon-collect" title="收藏" data-dbname="CMFD" data-filename="1022763035.nh"><i></i></a>
+          
+             
+        <a class="icon-quote" title="引用" href="javascript:void(0)"><i></i></a> 
+        
+      </td>            
+ 
+      </tr><tr  class="odd" >
+<td class="seq"><input class="cbItem" type=checkbox data-cur=19 name=CookieName  value="CMFD202301!1022034815.nh!19!0"  onclick="$(this).filenameClick()"  >19</td>     
+      <td class="name" >
+        
+        <a class="fz14" href='/kns8/Detail?sfield=fn&QueryID=0&CurRec=19&FileName=1022034815.nh&DbName=CMFD202301&DbCode=CMFD' target='_blank'>基于系统动力学的大型工程项目社会冲突仿真研究</a>
+          
+        
+        
+      
+               
+         
+           
+           
+        
+        
+           
+        
+         
+		</td>
+      <td class="author">
+      <a class='KnowledgeNetLink' href='/kns8/Detail?sdb=CMFD&sfield=%e4%bd%9c%e8%80%85&skey=%e8%bd%a6%e6%80%80%e8%bf%9c&scode=000011643722&acode=000011643722' target="knet">车怀远</a>   
+      </td>
+      <td class="source">     
+    
+      <a  target=_blank href='/kns8/Navi?DBCode=CMFD&BaseID=GYZDU'>扬州大学</a>     
+     
+      
+      
+     </td>
+      <td class="date">
+        2022-05-01
+      </td>        
+      <td class="data">
+	     硕士 
+      </td> 
+      <td class="quote">
+        
+      </td>
+      <td class="download">  
+         
+        <a class="downloadCnt" href='javascript:void(0);'>197</a>
+         
+      </td>
+        <td class="operat">
+            
+         <a href="/kns8/download?filename=vhFVwQHO5wmcttCN1Q1c29Uc3IWSH9WRwwmc5hkdG50KOBXUZhlaFBXdUFDTiJzcnFFWo92cKF2REFHWMxmZq92L5smV5tmNuRHetNUSZpVNkJzckdmW2FHdTRFMpt0ZptGSZVHW2gnTRl2aOp0LnJ2VspUWhJlU&tablename=CMFD202301" title="未登录" target=_blank class="downloadlink icon-notlogged"><i></i><b> 下载</b></a>
+        
+         
+         
+        
+         <a class="icon-read"  target="online_open" href='/kns8/Detail/Read?domain=tablename%3dCMFD202301%26filename%3d1022034815.nh%26dbCode%3dCMFD' title="在线阅读"><i></i></a>
+             
+        
+           
+         <a class="icon-collect" title="收藏" data-dbname="CMFD" data-filename="1022034815.nh"><i></i></a>
+          
+             
+        <a class="icon-quote" title="引用" href="javascript:void(0)"><i></i></a> 
+        
+      </td>            
+ 
+      </tr><tr >
+<td class="seq"><input class="cbItem" type=checkbox data-cur=20 name=CookieName  value="CJFDLAST2022!ZKSL202202009!20!0"  onclick="$(this).filenameClick()"  >20</td>     
+      <td class="name" >
+        
+       <a class="fz14" href='/kns8/Detail?sfield=fn&QueryID=0&CurRec=20&recid=&FileName=ZKSL202202009&DbName=CJFDLAST2022&DbCode=CJFD&yx=A&pr=&URLID=10.1413.N.20220419.1316.001' target='_blank'>我国群体性事件的典型特征、治理问题与对策建议</a>
+         
+        
+        
+      
+               
+         
+           
+           
+        
+        
+           
+        
+         
+		</td>
+      <td class="author">
+      <a class='KnowledgeNetLink' href='/kns8/Detail?sdb=CJFD&sfield=%e4%bd%9c%e8%80%85&skey=%e6%9d%8e%e5%80%a9%e5%80%a9&scode=000029486185&acode=000029486185' target="knet">李倩倩</a>; <a class='KnowledgeNetLink' href='/kns8/Detail?sdb=CJFD&sfield=%e4%bd%9c%e8%80%85&skey=%e7%8e%8b%e7%ba%a2%e5%85%b5&scode=000047792404&acode=000047792404' target="knet">王红兵</a>; <a class='KnowledgeNetLink' href='/kns8/Detail?sdb=CJFD&sfield=%e4%bd%9c%e8%80%85&skey=%e5%88%98%e6%80%a1%e5%90%9b&scode=000040908666&acode=000040908666' target="knet">刘怡君</a>; <a class='KnowledgeNetLink' href='/kns8/Detail?sdb=CJFD&sfield=%e4%bd%9c%e8%80%85&skey=%e9%a9%ac%e5%ae%81&scode=000034568791&acode=000034568791' target="knet">马宁</a>   
+      </td>
+      <td class="source">     
+    
+      
+      <a  target=_blank href='/kns8/Navi?DBCode=CJFD&BaseID=ZKSL' >智库理论与实践</a>
+      
+      
+     </td>
+      <td class="date">
+        2022-04-20 14:32
+      </td>        
+      <td class="data">
+	     期刊 
+      </td> 
+      <td class="quote">
+         
+         <span><a class="KnowledgeNetLink" href='/kns8/Detail?sdb=CJFD&sfield=cite&skey=%e6%88%91%e5%9b%bd%e7%be%a4%e4%bd%93%e6%80%a7%e4%ba%8b%e4%bb%b6%e7%9a%84%e5%85%b8%e5%9e%8b%e7%89%b9%e5%be%81%e3%80%81%e6%b2%bb%e7%90%86%e9%97%ae%e9%a2%98%e4%b8%8e%e5%af%b9%e7%ad%96%e5%bb%ba%e8%ae%ae&scode=ZKSL202202009' target="_blank">4</a></span>
+        
+      </td>
+      <td class="download">  
+         
+        <a class="downloadCnt" href='javascript:void(0);'>2685</a>
+         
+      </td>
+        <td class="operat">
+            
+         <a href="/kns8/download?filename=vhFVwQHO5wmcttCN1Q1c29Uc3IWSH9WRwwmc5hkdG50KOBXUZhlaFBXdUFDTiJzcnFFWo92cKF2REFHWhVWOqRUY0ZHUURkW3pXVaZUM5EjYy8SWNdjc6RnUrMkUxllWzBXeohjT2gnTRl2aOp0LnJ2VspUWhJlU&tablename=CJFDLAST2022" title="未登录" target=_blank class="downloadlink icon-notlogged"><i></i><b> 下载</b></a>
+        
+         
+         
+           
+         <a class="icon-html"  target="online_open" href='/kns8/Detail/Read?flag=html&domain=dbcode%3dCJFD%26filename%3dZKSL202202009' title="HTML阅读"><i></i></a>  
+            
+        
+           
+         <a class="icon-collect" title="收藏" data-dbname="CJFD" data-filename="ZKSL202202009"><i></i></a>
+          
+             
+        <a class="icon-quote" title="引用" href="javascript:void(0)"><i></i></a> 
+        
+      </td>            
+ 
+      </tr></table></td></tr></table><div class='pages'><span class='cur'>1</span><a href="javascript:void(0);" data-curpage="2" title="键盘的“← →”可以实现快速翻页" id="page2">2</a><a href="javascript:void(0);" data-curpage="3" title="键盘的“← →”可以实现快速翻页" id="page3">3</a><a href="javascript:void(0);" data-curpage="4" title="键盘的“← →”可以实现快速翻页" id="page4">4</a><a href="javascript:void(0);" data-curpage="5" title="键盘的“← →”可以实现快速翻页" id="page5">5</a><a href="javascript:void(0);" data-curpage="6" title="键盘的“← →”可以实现快速翻页" id="page6">6</a><a href="javascript:void(0);" data-curpage="7" title="键盘的“← →”可以实现快速翻页" id="page7">7</a><a href="javascript:void(0);" data-curpage="8" title="键盘的“← →”可以实现快速翻页" id="page8">8</a><a href="javascript:void(0);" data-curpage="2" title="键盘的“← →”可以实现快速翻页" id="PageNext">下一页</a></div></div><input type="hidden" id="docstateinfo" name=id="docstateinfo" value="JD00PYrfAvzGtFgNNTfafk4Fg7e9vv3GyTPzwvb1+7VU9XnJLnuQTEznY9J2pKRSvCBAIaOYDeAABeorOkwqhzbHvj9b+CSrsXwnfkU3xnj4+JVPX7dzmPbmSoR243F1229bcvRVeCdmlftt3dgTQhGWyDZqqiZYP15BIGHssLyr2+JOTOLQ0bDcEH3E5QihF3Gsm8NV+MXZVgRiPQA18svb5Xhe7xeaOJFSexkSDNU/aSTjw6hERVbUNREoerxyamLyiiJGB9qWTUGY9iSTXBQbj28Q0mnIOZpjc7G4yOMd3lksLnaeA8SCUNH5Rbtv1CdfIFPrjAff2Ce7tHpjPotdwa1++FS1NVR4yd4ZLcvbb1ty9FV4J2aV+23d2BNCUMJkhmOfjR/POMMY6P4Yep/dOxrV+IeA5HUEe6H1LcyNU3MDflTA4067q6eWzQ38GXf1dsrK5xz77DMP7tdCJQClszmuQdyS2z/RXriQqDecw8u+wBtcd0xvbNkEA+xzYU5nSq57sukmlBQPIIhlfFAvlXsZJvIO/erTG2CKBorah8+G6P73yWn13qPg2CracEHPtoaNIKweHju+DgpCYdtvW3L0VXgnZpX7bd3YE0LZJHS3SyH3L/vwMweWErENn907GtX4h4DkdQR7ofUtzK09/aPPPlE/pH/u7NZhzEnlNSGMSl6WE/LwDoiRSb+HxezFFGlHhkzxBE2PIgK1Atge8/T0pTXPFonhjM9OAUWV8fzRNhgOD5NvblWUmZO6prFj/GPEoPlhsI5ZOAFn8sBVGYLI4guT+S2CbWgIj+tF1THoZsuTd/jRmHwojvlO+Hu2rSCOv+YxgchwToahb8oJ+mHrzlVkfR/1mgR7GXM7++1KJw66Boncet7e34SxMmTQNxiz4evqqkpOQfNYqcT0uJgLddOjbeQvz8EBFx4+ZyGU7egWOqaB8MO9pIyDJi4uREFN3yLEana2D1TjjVj0e+eZJb87RM4u0X35iuiRhD7QPs0E8amUZfeD40H2sT9z/yYIwo0MR1Sb5M8GiT3rStbTTW/yjbNFdOmZHRE/aSTjw6hERVbUNREoerxylYBD55YWxg5+YNPZpsyPQsw9H5/xYyVzbxPtTawi0Mm6KhHFmGk25eHWnUWWaNz0Cl3+rq6zCLWzyLT4yIBMsn4O6pkuKqw+JWhYvgv+XldxGbgcwzMvpD93LL4CUO0HCNqHlaPG88Gw6PYBLfOdD6MxnxOoAZl7rSh9/PbomxAjOEQe88G8m1MgxWYQz0WROHs5idHiVhZCNPeNTeeXbAwgmr20ek+7h8dH95LrM70PIplB94tz1xKm2l0xjW5t7pOUEeoGUabXxjLuP0R4BQGO0PPYHeSk1Wl+/6SldyxGm8F/0FpqCtyhcXc0GD9hjkaKSER9Bh6ovHdqhPA6/pfm6AenONWLEN++Ed5a3m367tP4wx6SWxMUwXa2uG3Gx+sYNBqYqP6GuXCGBgRwLb4fj/wTc0GMN9ZLDiT1C3Lc3w7XJGe2L1FGkZKKJcAN11jCL/mGkQXMQn8BibLOsszrfQjK1BubsEj3mlV+UIFp4jKvEdKPUkugrmiAI+xD/fUB2FrsVgT7SOSrt2MmfSLvua09LlR/xkqLKxQvlDQTNAILSIdjS2CZiYzR7kGFcEHPtoaNIKweHju+DgpCYdtvW3L0VXgnZpX7bd3YE0LEVH+QOdztPYqyt8aQYqlon907GtX4h4DkdQR7ofUtzP70AfMeCoKuUUdHmF+8ZjjlNSGMSl6WE/LwDoiRSb+HxezFFGlHhkzxBE2PIgK1AubMe10nKhRFuw8p4UbsKhDnkqRermzivVzJWfiODCD7prFj/GPEoPlhsI5ZOAFn8sS1S1WG0kYkXTA4Ixo2fVMM4zlL4mHwSBB3ho65dpvBW/v/UbINB3i8BTYqz4PDcEOiQzCeaVO7ycfShfQWL7Jtj8Aij74aZi+7CcJnjHBzL+6STyuzGAZnIJeWMrgRWKcce3n8hLmJM78+z2AlEWt8VHIkWbsMR68OVH6xjauwgUD5cyJNWzdJG5AiEfwKupeMGCCf11n5ix4zUrNUu2Xaz3R6SPD1TakvtGDsf5wJpNUAgXiJH5QqMAcG5XFoXN0hw3dwdqfiYuShG0gc2u6zWSl+izBFGBLKDgmZXHCUVnmwcf/GWp2f/NcGT44JZconT2MzbDeSoQBAYgs65RcBFHSGIt4lf7Vy8313uf1SzZAQ5MS+GjvH6NpOlo7rpuapE2j61s6J56MTZaYKpowb1jApch5/cqTlRBbaGsPqyfm7bh0/2CK8Jk2aCs8+jIhI942Ga0UoFv8yrOwtbtKv6WpNr8ByQavw0w9Wcj/DHEl9TxwagDQHajlTbEMNrUXVMehmy5N3+NGYfCiO+U74e7atII6/5jGByHBOhqFvzGsjGEt2Rhu9L5N6bp6Jnb5y0wx0V+MYD87SxB0PnRjUhVDYSr6K1fGLxgDhjboB3ja7iFM28K30CVO0ybBJ1w=="/><input type="hidden" id="docprequery_server_url" name="docprequery_server_url" value="https://kns.cnki.net/docpre/api/inner/multi-statusex"/>
+    </div>
+    <input id="errorMsgHid" type="hidden" value="" />
+    <input id="HandlerIdHid" type="hidden" value="0" />
+    <input id="curPageHid" type="hidden" value="1" />
+    <input id="isSortHid" type="hidden" value="false" />
+    <input id="sqlVal" type="hidden" value="0645419CC2F0B23BC604FFC82ADF67C6E920108EDAD48468E8156BA693E89F481391D6F5096D7FFF3585B29E8209A884EFDF8EF1B43B4C7232E120D4832CCC8979F171B4C268EE675FFB969E7C6AF23B4B63CE6436EE93F3973DCB2E4950C92CBCE188BEB6A4E9E17C3978AE8787ED6BB56445D70910E6E32D9A03F3928F9AD8AADE2A90A8F00E2B29BD6E5A0BE025E88D8E778EC97D42EF1CF47C35B8A9D5473493D11B406E77A4FF28F5B34B8028FE85F57606D7A3FED75B27901EEF587583EBD4B63AC0E07735BE77F216B50090DEE5ABB766456B996D37EB8BDACA3A67E8126F111CF9D15B351A094210DB6B4638A21065F03B6F0B73BB4625BBECE66F8197909739D8FB4EB756DEF71864177DFA3CB468CFA6E8ABF7924234DED6B0DFD49D9269CBA4A2BF4075D517A61D094225D70C1B4C137DB9614758A5E097376F5F3E55A7063A4B7E437436D13FF3CC8FB435E131FFCD16FC30DD997098B4FC997D995E767E2712175BC05B960D3FEB5CAF12A13BD1CE3530AD72FC4DB93206996E216BC5DC294960A0CA05E986848E1E64FFC5A52BFCB41A97840A708E397F11EFF261E08F3A34094061AE8E8F819AF6A17A9E2176C3893C6DD3E3C06864C91989BDEF9790A38FAF2524B17743B30EBA4ADD550BF985F9C3097A608C697283CE37F8CB78BDC9EAA4874C3485E6F931B016EC41BFBC0EF91B2AD7E1B424E1DFB8FC8771DEA2458C5A7A4C9BF0192C101FD8EDDEE1BACB44C3E478361EF0D1B70FAD56BCF6870A6044D3A226611B9C1A43C6F9F7C021C98E0D5F778D72C87183F026071A730B8BB4FABF9F68FEC783AB1E6E79218B5D87FD1BB541817FB4F3C21DC849A803CB8A620A2EE00475BAF2CE6556638B7A949B446F39A1076DA15764A777BA6239447CB91F4CF513325366E167D268DDB75F288B5C13415CE62F5C431181C044A28CA502FF14439E5C6F63D419CB6DE1360DB01593FE765459299E442EE24917C199AB5178F38461F8C4EBBC95344C5F2AB60F379813A87E2E3AFE3021198B8222CEAB870D9A353786079961184D63977917C7DF8FE6AFBBC795A832BDD454D6E3CD22C3FF7A58808923DD6F464C12A9A88FBFD0C71458AB0E4C1D566315181A9578ECE93670E5CAF13CF2553F68E64726C131F4A48B42A9E7F09EFEBA51D1FDA6BA0ECA0B02B951ECC04548F1D4D08DB69D0EFDCE6793537BB8E59DC442631A9CDBA13878D7493AADA0CD868C1C1C3A6A6FA17C4109205A83F9C0C43E0D2551D0A8592EA99D20D4B78B4EEEE2D53A543701F620C7D6FF46E800B0CEF9B3D23ACD62C7CBEA25FC8BD74D5A0E5C86B9CF3FCACBDBE585AFF85F9689CBF5BCBD267C580361D5B93AA9BD5A1BB6122BB87C04AE227211FE675A4650814F2285261E5641683D65E0454E2597F6025BB4AA1A044D7B97F57394EA5EC878B80FC0A82F12E2D3D9E1BCB062A7ABB290F02116BDED95761A67CE2FDDE42BDDDF34F22E49A0406D724FEBC86B93F80BB52A8D34B8D2B24288ECBC3F90CCB1EF36085E77F1E2AE0AB411FE60A033E704A21469EA5CE4BB8AF6B1C1F1C5F1F084472D57F458CC39F0B2FE583D0795159E9E38BD1102F5D96DB0F828B66F41A702BB0AE59E40CF53BE7F6342EF208434CFFABF845AFD771B288D484BB79952159E6EA27658A6B6230557AF16E86C4AFDF973DBD5A3A2B979AD9037441409D22A954DC50CBCEA8EA5AC500C4BC8282DCE2626BD2B2CB4B1E33B2E1F92533F7F04C48D061907DBCE3E21FF0A77F09C1AE33E769962CD1EDE6B688590D569409EE9EEC4DF1074DCC97C43B0EDAF1C38B5B2784ABC803D9B3B4FC35F46CB1E275E7F83036FC6AFF2E624D4D2E6AE1C2D4CE3FF219FA90A935957E0DE1A386E4AAB5C9F9D1CECA909F5698BFA86C57B6A73D3C0F9FDB94128B7BB9FDD19D57E4C2C2F4127A1F127A96ABF248B26D8B6EF12A1EA97D064564D33D46E5CA71F53FA121A7E5C91ED2B08BE64A0E3D22BE26FC251C0BF4CF21674DE19AF410E3EDFBD9A4BBEA6C709A1E42B5C17E1EE7AA33EFB0F375BF0858D49210A71662313FA5B8E04E508A5E9425D49C3C5D12CB8DCADBF8A148BFA042BBB0218AAC403AAB9CECC45FD33CEC6797FC984BF91FF638AF6E1F09546F595CFC779D2D867282C63B78DC6A6ED3C1C3887462C84AC07C756C5A8D8A8B2EFD39C28A68D47091A3312461BC20085636F4B41F22D5B46861F3E557777CDCFDFE6CAB8ABECFECA3634D779C0F21185772CA46EA1C0B1E0191F02F11A2B10372550A8B839D8C819F77A67512CA57D16DBA687D1BB77271E375C6DD3432C804B0A707D0DF7D72108E3190885E95DE0F0F118A904C80D606BB82C582FF3E3D836AED573EA426D382FF3D0C83B51E0E63B863FC20F67D2C68C14558E2EEDED6B71B615A74152632E0E1A4BFC01F083BEEA6E702D1650038B1826D1970F88507FB5E5C07A18F3BD94177B73C5C9E960EE73ED66B353BB65245EABB7D552BA6F27425B703A081479862CF0C6A2102A796F0B93F072D362F8CE04AB334C4342186C69F946794EE812FFC903D270DF98BCEAF98F8C4D685BB25DD848FBDE28BE6A5DB4564BF4D9115620B5BA45E1A86A44A0F4A1D1839184E8E952AB38050D6C2A5378577AB09FA6A5167AA498C61F04853CCA741B2A360E4EA67F8F67E4739DFB9DF144C9D44CBAFEA30AD7B764F276F570674A2333F36EB6C9051026EA82DE60C00EFB5DF9661474D1A9DDD4137C8E7DC9E1B9C4D4E6D9091E5764AECB618E94F85A503FBACE93CAB29A06953832D09B0209A14A166A74F1CD4897AE8859A481A4DBFAD581995A658F3760823F3D9B538DD0053554A723CBD58B946830D2FA2B6D7B488523EEBCC212063F740F5127D3FFE63AA981252FFEDE541B850EC4C17E243010576C66D94D358262F1CCCC5394E5747A9CC28F4AB8FA057C5F28F60D26358EAB21D9CAEF8049BF0406203FEE6A6FF8AD9102842C0522AA843A36AB161C2DDC103143757B2E9A96D45F9BC916B9D10647B7400E800A68E6012769E21F330F83B471D62CADC23096017778D628DD7F3D0A7CA87F44B368691CA476D0F337795D52252431DA91794A7F7E09D55D13B2B31B04237B95EDD58265AD3BFA0776D0CE0908469BC5B6B08E4431D09C0D8575EAC460BF4B1EB75B6A13F3" />
+    <input id="pathAnalysisHid" type="hidden" value="/KVisual/ArticleAnalysis/index?" />
+
+</form>
+
+<script type="text/javascript">
+    $(function () {
+        if ('True'=='False') {
+            $("#batchOpsBox .bulkdownload").css("display","none");
+        }
+    });
+   
+</script>
