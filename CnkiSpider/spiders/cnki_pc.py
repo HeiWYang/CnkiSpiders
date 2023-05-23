@@ -28,18 +28,26 @@ class CnkiPcSpider(scrapy.Spider):
         )
 
     def parse(self, response):
-        self.logger.debug('______________________________________1')
         # with open('test.html', 'w', encoding='utf-8') as f:
         #     f.write(response.text)
         soup = BeautifulSoup(response.body, 'html.parser')
-        a_articles = soup.find_all("a", attrs={'class':'fz14'})
-        for a in a_articles:
-            href_article = a.attrs['href']
-            article_url = self.home_url + href_article
-            yield scrapy.Request(
-                url = article_url,
-                callback = self.parse_article
-            )
+        tr_nodes = soup.select('.result-table-list tr')
+        # self.logger.debug(tr_nodes[1])
+        for tr_node in tr_nodes:
+            if tr_node.select('.date'):
+                date = tr_node.select('.date')[0].get_text()
+                href_articles = tr_node.select('.fz14')[0].attrs['href']
+                article_url = self.home_url + href_articles
+                # self.logger.debug(date)
+                # self.logger.debug(article_url)
+                yield scrapy.Request(
+                    url = article_url,
+                    callback = self.parse_article,
+                    meta = {
+                        "time" : date
+                    } 
+                )
+
         if soup.find('a', {'id': 'PageNext'}):
             self.cur_page += 1
             self.form_data["CurPage"] = str(self.cur_page)
@@ -52,17 +60,12 @@ class CnkiPcSpider(scrapy.Spider):
         
 
 
-        self.logger.debug('______________________________________2')
-
-
     def parse_article(self,response):
         soup = BeautifulSoup(response.body, 'html.parser')
         title = soup.select('.wx-tit h1')[0].get_text()
         abstract = soup.select('.abstract-text')[0].get_text()
         yield {
             "title" : title,
-            "abstract" : abstract
+            "abstract" : abstract,
+            "time" : response.meta["time"]
         }
-        # self.logger.debug(title)
-        # self.logger.debug(abstract)
-
