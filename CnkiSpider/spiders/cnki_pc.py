@@ -1,5 +1,6 @@
 import scrapy
 from bs4 import BeautifulSoup
+from scrapy_splash import SplashRequest
 
 class CnkiPcSpider(scrapy.Spider):
     name = "cnki_pc"
@@ -19,6 +20,29 @@ class CnkiPcSpider(scrapy.Spider):
         "RecordsCntPerPage" : "50"
     }
 
+    lua_script = """
+function main(splash, args)
+  assert(splash:go(args.url))
+  assert(splash:wait(1))
+  if splash:select("#ChDivSummaryMore") then
+    local more = splash:select("#ChDivSummaryMore")
+    assert(more, "Failed to select #ChDivSummaryMore element")
+  
+    local style = more.attributes.style
+    if style and style:lower():find("display%s*:%s*none") then
+      -- Element is hidden, no need to click
+    else
+      more:mouse_click()
+      assert(splash:wait(1))
+    end
+  end
+  
+  return {
+    html = splash:html(),
+  }
+end
+    """
+
     def start_requests(self):
         yield scrapy.FormRequest(
             url = self.start_url,
@@ -35,11 +59,16 @@ class CnkiPcSpider(scrapy.Spider):
                 date = tr_node.select('.date')[0].get_text()
                 href_articles = tr_node.select('.fz14')[0].attrs['href']
                 article_url = self.home_url + href_articles
-                yield scrapy.Request(
+                yield SplashRequest(
                     url = article_url,
+                    endpoint='execute',
                     callback = self.parse_article,
                     meta = {
                         "time" : date
+                    },
+                    args={
+                        'wait': 3,
+                        'lua_source': self.lua_script
                     } 
                 )
 
@@ -58,8 +87,12 @@ class CnkiPcSpider(scrapy.Spider):
         soup = BeautifulSoup(response.body, 'html.parser')
         title = soup.select('.wx-tit h1')[0].get_text()
         abstract = soup.select('.abstract-text')[0].get_text()
+        keyword_str = ""
+        for kw in soup.select('[name="keyword"]'):
+            keyword_str += kw.get_text()
         yield {
             "title" : title,
             "abstract" : abstract,
-            "time" : response.meta["time"]
+            "time" : response.meta["time"],
+            "keyword" : keyword_str
         }
